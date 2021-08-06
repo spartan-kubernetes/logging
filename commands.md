@@ -23,6 +23,11 @@
 
 ### Set cluster-config.yaml file for kubectl after you downloading config file from Linode
 
+###### Restrict kubeconfig file permissions - to avoid security warning in helm v.3.3.2 upwards
+https://github.com/microsoft/azure-pipelines-tasks/pull/13633#issue-495303841
+
+    chmod 600 /path/to/config.yaml
+
 ###### Linux, MacOS
     export KUBECONFIG=/path/to/config.yaml
 
@@ -34,7 +39,7 @@
 
 ### Install Elastic Stack (EFK) Elastic, FluentD, Kibana
 
-##### install elastic search chart 
+##### install elastic search chart
     helm repo add elastic https://Helm.elastic.co
     helm install elasticsearch elastic/elasticsearch -f values-linode.yaml
 
@@ -46,9 +51,16 @@
     access: localhost:5601
 
 ##### install nginx-ingress controller
-    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm repo add stable https://charts.helm.sh/stable 
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
     helm install nginx-ingress ingress-nginx/ingress-nginx
+
+[New Chart Repo](https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx)
+
+###### NOTE
+The following repo has been deprecated - https://stackoverflow.com/a/57970816
+
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com/ 
 
 ##### install Fluentd
     helm repo add bitnami https://charts.bitnami.com/bitnami

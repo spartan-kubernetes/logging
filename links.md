@@ -26,5 +26,5 @@
     ./gradlew -Dorg.gradle.java.home=/jdk_path_directory
 
 
-#### Fluentd Regex UI 
+#### Fluentd Regex UI
 https://fluentular.herokuapp.com/
